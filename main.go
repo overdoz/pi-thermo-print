@@ -108,7 +108,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
 			// send a txt file to the printer
 			SendToPrinter(o, FILENAME_TXT)
-			RenameFile(date)
+			newName := RenameFile(date)
+			StoreToArchiv(newName, "archiv")
 
 			// send data to firestore database
 			// s.SendToFirebase(msg, date)
@@ -294,17 +295,23 @@ func FormatString(text string, maxLen, longest int) string {
 	return output
 }
 
-func RenameFile(n string) {
+func RenameFile(n string) string {
 	oldName := "test.txt"
 	newName := n + ".txt"
 	err := os.Rename(oldName, newName)
 	if err != nil {
 		log.Fatal(err)
 	}
+	return newName
 }
 
 func StoreToArchiv(name, dir string) {
+	err :=  os.Rename("./" + name, "./" + dir + "/" + name)
 
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }
 
 
