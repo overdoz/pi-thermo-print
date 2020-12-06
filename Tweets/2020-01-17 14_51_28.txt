@@ -1,0 +1,19 @@
+Polizist
+  "Sind sie high?"
+
+Ich
+  "Hallo, was 
+soll ich 
+   sein?"
+
+Polizist
+  "high"
+
+Ich
+  "Hallo" 
+
+
+
+         2020-01-17 14:51:28
+
+   

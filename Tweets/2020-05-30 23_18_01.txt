@@ -1,0 +1,12 @@
+7,8 - eigene Karte 
+9,10 - fremde Karte 
+B (11) 
+D (12) - blind tauschen 
+K rot (-1) 
+K schwarz (13) 
+
+
+
+         2020-05-30 23:18:01
+
+   
