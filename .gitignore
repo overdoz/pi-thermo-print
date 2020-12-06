@@ -1,3 +1,4 @@
 service-account-file.json
 *.txt
-archiv/*
+archiv/*.txt
+Tweets/*
