@@ -1,4 +1,6 @@
 service-account-file.json
 *.txt
 archiv/*.txt
+# exception to the rule
+!archiv/.gitkeep
 Tweets/*
