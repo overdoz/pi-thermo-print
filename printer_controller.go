@@ -1,4 +1,4 @@
-package app
+package main
 
 import (
 	"io"
@@ -9,13 +9,11 @@ import (
 	"strings"
 )
 
-
-
 // file should have the ending .txt
 func SendToPrinter(t, file string) {
 	printText := []byte(t)
 
-	err := ioutil.WriteFile("./" + file, printText, 0644)
+	err := ioutil.WriteFile("./"+file, printText, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,19 +26,18 @@ func SendToPrinter(t, file string) {
 	cmd := exec.Command(args[0], args[1:]...)
 
 	// execute command
-	b, err := cmd.CombinedOutput()
+	_, err = cmd.CombinedOutput()
 
 	if err != nil {
 		log.Println(err)
 	}
-	log.Printf("%s \n", b)
 }
 
 func SendFileToPrinter(file io.Reader) {
 	log.Println("processing image...")
 
 	// create png file
-	tempFile, _ := os.Create(FILENAME_PNG)
+	tempFile, _ := os.Create(FilenamePng)
 
 	// read request body from client
 	fileBytes, err := ioutil.ReadAll(file)
@@ -61,11 +58,11 @@ func SendFileToPrinter(file io.Reader) {
 	}
 
 	// Read image from file that already exists
-	err = AdjustImage(FILENAME_PNG)
+	err = AdjustImage(FilenamePng)
 	if err != nil {
 		log.Fatalf("failed to save image after edit: %v", err)
 	}
 
 	// print the png file
-	PrintImage(FILENAME_PNG)
+	PrintImage(FilenamePng)
 }
